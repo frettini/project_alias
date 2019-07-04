@@ -111,7 +111,7 @@ p{
 #inner-scrool{
   max-height: 80%;
   overflow: scroll;
-  -webkit-overflow-scrolling
+  -webkit-overflow-scrolling;
 }
 
 #settings{
