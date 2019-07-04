@@ -52,6 +52,11 @@ def incoming(message):
         print('reloading speech class')
         globals.CONFIG_HAS_CHANGED = True
 
+    if('triggerGoogle' in msg):
+        print('OkGoogle')
+        globals.TRIGGER_GOOGLE = True
+        
+
 
 # End of socket
 #====================================================#
@@ -77,6 +82,15 @@ def socket_thread():
 
 def speech_thread():
     # when a keyphrase is detected, the for loop runs (LiveSpeech magic)
+    if globals.TRIGGER_GOOGLE:
+        globals.GLOW = True
+        noise.stop()
+        print('say:', data['whisper'])
+        sound.speak(data['whisper'])
+        time.sleep(int(globals.SETTING['setting']['delay']))
+        noise.play()
+        globals.TRIGGER_GOOGLE = False
+
     for phrase in globals.SPEECH:
         topWord = phrase.segments()[0]
         print('trigger: ', topWord)

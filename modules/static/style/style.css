@@ -1,9 +1,16 @@
+<<<<<<< HEAD
 
 @font-face {
   font-family: 'Work Sans';
   src: url('../assets/fonts/worksans-semibold-webfont.woff2') format('woff2'),
        url('../assets/fonts/worksans-semibold-webfont.woff') format('woff');
 
+=======
+@font-face {
+  font-family: "Work Sans";
+  src: url('/../assets/fonts/worksans-semibold-webfont.woff2') format('woff2'),
+       url('/../assets/fonts/worksans-semibold-webfont.woff') format('woff');
+>>>>>>> 4892ed75438c9bb2d61fe06dd5b76145cc47a407
   font-weight: SemiBold;
   font-style: SemiBold;
 }
@@ -117,7 +124,11 @@ p{
 #inner-scrool{
   height: 75%;
   overflow: scroll;
+<<<<<<< HEAD
   -webkit-overflow-scrolling: touch;
+=======
+  -webkit-overflow-scrolling : auto;
+>>>>>>> 4892ed75438c9bb2d61fe06dd5b76145cc47a407
 }
 
 #settings{
@@ -170,9 +181,16 @@ p{
   cursor: pointer;
 }
 
+<<<<<<< HEAD
 #footer{
 	position: relative;
 	height: 16%;
+=======
+.footer{
+	position: absolute;
+	height: 20px;
+  bottom: 65px;
+>>>>>>> 4892ed75438c9bb2d61fe06dd5b76145cc47a407
   width: 100%;
   background-color: white;
 }
@@ -181,13 +199,25 @@ p{
   position: relative;
   margin: 15px;
   padding: 15px 0px;
-  width: 160px;
+  width: 140px;
   background-color: black;
   border-radius: 5px;
   color: white;
   text-align: center;
-  margin-left: auto;
-  margin-right: auto;
+  float : left;
+  cursor: pointer;
+}
+
+#trigger{
+  position: relative;
+  margin: 15px;
+  padding: 15px 0px;
+  width: 140px;
+  background-color: black;
+  border-radius: 5px;
+  color: white;
+  text-align: center;
+  float : right;
   cursor: pointer;
 }
 
