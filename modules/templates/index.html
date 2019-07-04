@@ -10,7 +10,6 @@
     <script type="text/javascript" src="../static/js/jquery-color-min.js"></script>
     <script type="text/javascript" src="../static/js/rangetouch.js"></script>
     <script type="text/javascript" src="../static/js/socket.io.js"></script>
-    <script type="text/javascript" src="../static/js/bodyScrollLock.js"></script>
   </head>
 
   <body oncontextmenu="false" onload="requestSettings()">
@@ -134,9 +133,6 @@
   <!-- Javascript -->
   <script type="text/javascript" charset="utf-8">
     const ranges = RangeTouch.setup('input[type="range"]', { thumbWidth: 20 });
-    const targetElement = document.querySelector("#inner-scrool #settings");
-    bodyScrollLock.disableBodyScroll(targetElement);
-    var hasRecievedBlocks = false;
 
     // Get data form Raspberry
     var socket = io.connect('http://' + document.domain + ':' + location.port + '/socket');
@@ -145,15 +141,10 @@
 
     // get message from pi
     socket.on('response', function(msg) {
-      if(!hasRecievedBlocks){
-        currentSettings = msg;
-        console.log(currentSettings)
-        updateBlocks(msg);
-        updateSettings(msg);
-        
-        //prevet duplication of blocks on multiple clients. 
-        hasRecievedBlocks = true; 
-      }
+      currentSettings = msg;
+      console.log(currentSettings)
+      updateBlocks(msg);
+      updateSettings(msg);
     });
 
     //Animate block when keyword is activated
@@ -374,6 +365,6 @@
       }
     ];
 
-   // document.addEventListener("touchmove", preventBehavior, {passive: false});
+    document.addEventListener("touchmove", preventBehavior, {passive: false});
   </script>
 </html>
