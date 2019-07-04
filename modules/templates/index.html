@@ -36,12 +36,13 @@
         </p>
     </div>
 
-    <div id="footer" onclick="updateButton()">
-        <div id="submit">Update Alias</div>
-        <div> Another button here</div>
-      </p>
-    </div>
-
+    <div class="footer" >
+        <div id="submit" onclick="updateButton()">Update Alias</div>
+      </div>
+  
+    <div class="footer" >
+      <div id="trigger" onclick="triggerGoogle()">Trigger</div>
+    </div>      
 
     <div id="settings">
       <div style="padding: 15px; margin-Bottom: 32px;">
@@ -183,8 +184,12 @@
         console.log(this);
         animateblock($this, i, 500)
         i += 100;
-    });
-  }
+      });
+    }
+    
+    function triggerGoogle(){
+      socket.emit('msgEvent',{msg:"triggerGoogle"});
+    }
 
     // copy the current blocks values into a settings file and send it to the pi
     function updateServer(){

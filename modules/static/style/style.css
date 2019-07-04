@@ -1,4 +1,4 @@
-@@font-face {
+@font-face {
   font-family: "Work Sans";
   src: url('/../assets/fonts/worksans-semibold-webfont.woff2') format('woff2'),
        url('/../assets/fonts/worksans-semibold-webfont.woff') format('woff');
@@ -111,7 +111,7 @@ p{
 #inner-scrool{
   max-height: 80%;
   overflow: scroll;
-  -webkit-overflow-scrolling;
+  -webkit-overflow-scrolling : auto;
 }
 
 #settings{
@@ -162,7 +162,7 @@ p{
   cursor: pointer;
 }
 
-#footer{
+.footer{
 	position: absolute;
 	height: 20px;
   bottom: 65px;
@@ -174,13 +174,25 @@ p{
   position: relative;
   margin: 15px;
   padding: 15px 0px;
-  width: 160px;
+  width: 140px;
   background-color: black;
   border-radius: 5px;
   color: white;
   text-align: center;
-  margin-left: auto;
-  margin-right: auto;
+  float : left;
+  cursor: pointer;
+}
+
+#trigger{
+  position: relative;
+  margin: 15px;
+  padding: 15px 0px;
+  width: 140px;
+  background-color: black;
+  border-radius: 5px;
+  color: white;
+  text-align: center;
+  float : right;
   cursor: pointer;
 }
 
