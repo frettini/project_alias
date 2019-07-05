@@ -83,13 +83,7 @@ def socket_thread():
 def speech_thread():
     # when a keyphrase is detected, the for loop runs (LiveSpeech magic)
     if globals.TRIGGER_GOOGLE:
-        globals.GLOW = True
-        noise.stop()
-        print('say:', data['whisper'])
-        sound.speak(data['whisper'])
-        time.sleep(int(globals.SETTING['setting']['delay']))
-        noise.play()
-        globals.TRIGGER_GOOGLE = False
+        print("this has been trigger")
 
     for phrase in globals.SPEECH:
         topWord = phrase.segments()[0]
