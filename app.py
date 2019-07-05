@@ -56,8 +56,8 @@ def incoming(message):
         print('OkGoogle')
         #globals.TRIGGER_GOOGLE = True
         noise.stop()
-        time.sleep(int(globals.SETTING['setting']['delay']))
         sound.speak("Ok Google")
+        time.sleep(int(globals.SETTING['setting']['delay']))
         noise.play()
         
 
