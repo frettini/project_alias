@@ -30,10 +30,10 @@ def index():
     sendMsg('response',settings.read())
     return render_template('index.html')
 
-@sio.event
+@socketio.event
 def connect(sid, environ):
     print('connect ', sid)
-    sio.emit('response', {'data': 'foobar'}, room=sid)
+    socketio.emit('response', {'data': 'foobar'}, room=sid)
 
 # @app.route('/computer')
 # def computer():
