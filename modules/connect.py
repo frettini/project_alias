@@ -21,8 +21,23 @@ logging.getLogger('werkzeug').setLevel(logging.ERROR) # remove socket io logs
 def sendMsg(namespace,obj):
     socketio.emit(namespace,obj,namespace='/socket')
 
+# def sendMsgComp(namespace, obj):
+#     socketio.emit(namespace, obj, namepspace='/computer')
+
 @app.route('/')
 def index():
     print('Someone Connected!')
     sendMsg('response',settings.read())
     return render_template('index.html')
+
+@sio.event
+def connect(sid, environ):
+    print('connect ', sid)
+    sio.emit('response', {'data': 'foobar'}, room=sid)
+
+# @app.route('/computer')
+# def computer():
+#     print('computer connected!')
+#     sendMsgComp('response', data = 1)
+
+
