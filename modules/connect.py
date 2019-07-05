@@ -30,10 +30,9 @@ def index():
     sendMsg('response',settings.read())
     return render_template('index.html')
 
-@socketio.event
-def connect(sid, environ):
-    print('connect ', sid)
-    socketio.emit('response', {'data': 'foobar'}, room=sid)
+@socketio.on('connect')
+def connect():
+    socketio.emit('my response', {'data': 'Connected'})
 
 # @app.route('/computer')
 # def computer():
