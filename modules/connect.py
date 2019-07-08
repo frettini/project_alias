@@ -9,7 +9,7 @@ import logging
 
 # Socket I/O
 #====================================================#
-PORT            = 5060
+PORT            = 5050
 HOST            = '0.0.0.0'
 app             = Flask(__name__)
 app.debug       = False
