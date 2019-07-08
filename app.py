@@ -82,7 +82,7 @@ def socket_thread():
     print("============================================")
     print('')
 
-    connect.socketio.run(connect.app, host=connect.HOST, port=connect.PORT, debug=True, log_output=True)
+    connect.socketio.run(connect.app, host=connect.HOST, port=connect.PORT, debug=False, log_output=False)
 
 def speech_thread():
     # when a keyphrase is detected, the for loop runs (LiveSpeech magic)
@@ -126,6 +126,7 @@ def main():
 
     while True:
 
+        connect.socketio.emit('hello', {'data': 'hello'})
         if(globals.GLOW == True):
             time.sleep(0.01)
             led.LED.on(count)
@@ -162,8 +163,6 @@ if __name__ == '__main__':
      thread = Thread(target=socket_thread)
      thread.daemon = True
      thread.start()
-
-     connect.socketio.emit('hello', {'data': 'hello'})
      main()
 
 def exit_handler():
