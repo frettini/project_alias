@@ -17,8 +17,7 @@ import os
 
 # Socket connection between client
 #====================================================#
-@connect.socketio.on('msgEvent' )
-# namespace='/socket'
+@connect.socketio.on('msgEvent', namespace='/socket')
 def incoming(message):
     msg = message['msg']
     if('updateServer' in msg):
