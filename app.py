@@ -126,7 +126,6 @@ def main():
 
     while True:
 
-        connect.socketio.emit('hello', {'data': 'hello'})
         if(globals.GLOW == True):
             time.sleep(0.01)
             led.LED.on(count)
