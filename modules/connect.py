@@ -31,10 +31,10 @@ def index():
     sendMsg('response',settings.read())
     return render_template('index.html')
 
-# @socketio.on('connect')
-# def connect():
-#     print('Someone Connected!!!')
-#     socketio.emit('response', {'data': 'Connected'})
+@socketio.on('connect')
+def connect():
+    print('Someone Connected!!!')
+    socketio.emit('response', {'data': 'Connected'})
 
 # @app.route('/computer')
 # def computer():
