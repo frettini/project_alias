@@ -21,8 +21,8 @@ logging.getLogger('werkzeug').setLevel(logging.ERROR) # remove socket io logs
 def sendMsg(namespace,obj):
     socketio.emit(namespace,obj,namespace='/socket')
 
-@socketio.on('customEvent', namespace='/computer')
-def customEvent(msg):
+@socketio.event(namespace='/computer')
+def customEvent(sid, msg):
      print ('test')
      print('received : ', msg['msg'])
 
