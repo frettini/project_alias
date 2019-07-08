@@ -23,6 +23,7 @@ def sendMsg(namespace,obj):
 
 @socketio.on('customEvent', namespace='/computer')
 def customEvent(msg):
+     print ('test')
      print('received : ', msg['msg'])
 
 @app.route('/')
