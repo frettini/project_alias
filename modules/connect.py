@@ -22,7 +22,7 @@ def sendMsg(namespace,obj):
     socketio.emit(namespace,obj,namespace='/socket')
 
 @socketio.on('customEvent', namespace='/socket')
-def customEvent():
+def customEvent(msg):
      print ('test')
      print('received : ', msg['msg'])
 
