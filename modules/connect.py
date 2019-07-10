@@ -21,8 +21,8 @@ logging.getLogger('werkzeug').setLevel(logging.ERROR) # remove socket io logs
 def sendMsg(namespace,obj):
     socketio.emit(namespace,obj,namespace='/socket')
 
-@socketio.on('customEvent')
-def customEvent(msg):
+@socketio.on('customEvent', namespace='/socket')
+def customEvent():
      print ('test')
      print('received : ', msg['msg'])
 
@@ -36,14 +36,4 @@ def index():
 def connect():
     print('Someone Connected!!!')
     socketio.emit('responsepi', {'data': 'Connected'})
-
-@socketio.on('json', namespace='/socket')
-def handle_json(json):
-    print('received json: ' + str(json))
-
-# @app.route('/computer')
-# def computer():
-#     print('computer connected!')
-#     sendMsgComp('response', data = 1)
-
 
