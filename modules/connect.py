@@ -9,7 +9,7 @@ import logging
 
 # Socket I/O
 #====================================================#
-PORT            = 5060
+PORT            = 5050
 HOST            = '0.0.0.0'
 app             = Flask(__name__)
 app.debug       = False
@@ -21,7 +21,7 @@ logging.getLogger('werkzeug').setLevel(logging.ERROR) # remove socket io logs
 def sendMsg(namespace,obj):
     socketio.emit(namespace,obj,namespace='/socket')
 
-@socketio.on('customEvent', namespace='/computer')
+@socketio.on('customEvent', namespace='/socket')
 def customEvent(msg):
      print ('test')
      print('received : ', msg['msg'])
@@ -35,11 +35,5 @@ def index():
 @socketio.on('connect')
 def connect():
     print('Someone Connected!!!')
-    socketio.emit('response', {'data': 'Connected'})
-
-# @app.route('/computer')
-# def computer():
-#     print('computer connected!')
-#     sendMsgComp('response', data = 1)
-
+    socketio.emit('responsepi', {'data': 'Connected'})
 
