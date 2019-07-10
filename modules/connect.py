@@ -35,7 +35,7 @@ def index():
 @socketio.on('connect')
 def connect():
     print('Someone Connected!!!')
-    socketio.emit('response', {'data': 'Connected'})
+    socketio.emit('responsepi', {'data': 'Connected'})
 # @app.route('/computer')
 # def computer():
 #     print('computer connected!')
