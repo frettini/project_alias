@@ -37,7 +37,7 @@ def connect():
     print('Someone Connected!!!')
     socketio.emit('responsepi', {'data': 'Connected'})
 
-@socketio.on('json')
+@socketio.on('json', namespace='/socket')
 def handle_json(json):
     print('received json: ' + str(json))
 
