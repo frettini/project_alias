@@ -36,6 +36,11 @@ def index():
 def connect():
     print('Someone Connected!!!')
     socketio.emit('responsepi', {'data': 'Connected'})
+
+@socketio.on('json')
+def handle_json(json):
+    print('received json: ' + str(json))
+
 # @app.route('/computer')
 # def computer():
 #     print('computer connected!')
