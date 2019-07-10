@@ -19,7 +19,7 @@ FLASK_DEBUG = 0
 logging.getLogger('werkzeug').setLevel(logging.ERROR) # remove socket io logs
 
 def sendMsg(namespace,obj):
-    socketio.emit(namespace,obj)
+    socketio.emit(namespace,obj,namespace='/socket')
 
 @socketio.on('customEvent')
 def customEvent(msg):
