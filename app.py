@@ -61,7 +61,7 @@ def incoming(message):
         noise.play()
 
 
-@connect.socketio.on('ComputerMsg')
+@connect.socketio.on('ComputerMessage')
 def computerMsg(message):
     print("received a message")
     if message == "TriggerGoogle":
