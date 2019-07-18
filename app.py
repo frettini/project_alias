@@ -59,7 +59,17 @@ def incoming(message):
         sound.speak("Ok Google")
         time.sleep(int(globals.SETTING['setting']['delay']))
         noise.play()
-        
+
+
+@connect.socketio.on('ComputerMsg')
+def computerMsg(message):
+    if message == "TriggerGoogle":
+        print('OkGoogle')
+        #globals.TRIGGER_GOOGLE = True
+        noise.stop()
+        sound.speak("Ok Google")
+        time.sleep(int(globals.SETTING['setting']['delay']))
+        noise.play()
 
 
 # End of socket

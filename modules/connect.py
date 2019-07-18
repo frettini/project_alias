@@ -35,5 +35,5 @@ def index():
 @socketio.on('connect')
 def connect():
     print('Someone Connected!!!')
-    socketio.emit('responsepi', {'data': 'Connected'})
+    socketio.emit("responsepi", {"data": "Connected"})
 
