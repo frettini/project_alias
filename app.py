@@ -63,6 +63,7 @@ def incoming(message):
 
 @connect.socketio.on('ComputerMsg')
 def computerMsg(message):
+    print("received a message")
     if message == "TriggerGoogle":
         print('OkGoogle')
         #globals.TRIGGER_GOOGLE = True
