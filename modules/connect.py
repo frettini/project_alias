@@ -19,9 +19,9 @@ FLASK_DEBUG = 0
 logging.getLogger('werkzeug').setLevel(logging.ERROR) # remove socket io logs
 
 def sendMsg(namespace,obj):
-    socketio.emit(namespace,obj)
+    socketio.emit(namespace,obj,namespace='/socket')
 
-@socketio.on('customEvent')
+@socketio.on('customEvent', namespace='/socket')
 def customEvent(msg):
      print ('test')
      print('received : ', msg['msg'])
@@ -37,3 +37,8 @@ def connect():
     print('Someone Connected!!!')
     socketio.emit('responsepi', {'data': 'Connected'})
 
+
+@socketio.on('disconnect')
+def disconnect():
+    print('Client Disconnected')
+    
