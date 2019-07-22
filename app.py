@@ -59,18 +59,20 @@ def incoming(message):
         sound.speak("Ok Google")
         time.sleep(int(globals.SETTING['setting']['delay']))
         noise.play()
-
+        connect.socketio.emit('responsepi2', {"noiseStopped"})
 
 @connect.socketio.on('ComputerMessage')
 def computerMsg(message):
     print("received a message")
     if message == "TriggerGoogle":
-        print('OkGoogle')
-        #globals.TRIGGER_GOOGLE = True
+        print('Computer trigger : Ok Google')
         noise.stop()
         sound.speak("Ok Google")
         time.sleep(int(globals.SETTING['setting']['delay']))
         noise.play()
+
+    
+
 
 
 # End of socket
