@@ -44,7 +44,7 @@ def speak(txt):
     speed = str(globals.SETTING['setting']['speed'])
     print(speed)
 
-    cmd = 'espeak '+lang+gender+' "'+txt+'"' + "-s" + speed
+    cmd = 'espeak '+lang+gender+ " -s"+speed+' "'+txt+'"'
     os.system(cmd)
 
 def setVolume():
