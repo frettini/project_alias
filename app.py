@@ -59,7 +59,7 @@ def incoming(message):
         sound.speak("Ok Google")
         time.sleep(int(globals.SETTING['setting']['delay']))
         noise.play()
-        connect.socketio.emit('responsepi2', {"noiseStopped"})
+        connect.socketio.emit('responsepi2', "noiseStopped")
 
 @connect.socketio.on('ComputerMessage')
 def computerMsg(message):
