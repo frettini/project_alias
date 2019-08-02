@@ -48,7 +48,8 @@ def setVolume():
 
     vol = globals.SETTING['setting']['volume']
     vol = str(settings.mapF(int(vol),0,100,80,100))
-    os.system('amixer -c 0 sset Headphone '+vol+'%')
+    speed = str(globals.SETTING['setting']['speed'])
+    os.system('amixer -c 0 sset Headphone '+vol+'%'+"-s"+speed)
     os.system('amixer -c 0 sset Speaker '+vol+'%')
 
 
