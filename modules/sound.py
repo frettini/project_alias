@@ -41,7 +41,7 @@ def speak(txt):
         if lan[0] == lang:
             lang = lan[1]
 
-    speed = globals.SETTING['setting']['speed']
+    speed = str(globals.SETTING['setting']['speed'])
     print(speed)
 
     cmd = 'espeak '+lang+gender+' "'+txt+'"' + "-s" + speed
