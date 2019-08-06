@@ -209,7 +209,7 @@
                      "volume": $("#setting-volume").val(),
                      "sensitivity": $("#setting-sensitivity").val(),
                      "delay": $("#setting-delay").val(),
-                     "speed":$("#speed").val()}
+                     "speed":$("#setting-speed").val()}
 
       console.log(setting.noise);
       socket.emit('msgEvent',{msg:"updateServer", data: {keyphrase, setting}});
