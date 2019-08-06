@@ -115,6 +115,12 @@
         <div class="setting-value">10s</div>
         <input class="slider" id="setting-delay" type="range" value="10" max="30"></input>
       </div>
+      <div style="height: 32px;"></div>
+      <div class="setting-input" class="slider">
+        <div class="setting-title">Voice Speed</div>
+        <div class="setting-value">10</div>
+        <input class="slider" id="setting-speed" type="range" value="190" max="290"></input>
+      </div>
       <div style="height: 68px;"></div>
       <div class="setting-input">
         <div class="setting-title" id="setting-default" >Set to default</div>
@@ -202,7 +208,8 @@
                      "gender": $("#gender").val(),
                      "volume": $("#setting-volume").val(),
                      "sensitivity": $("#setting-sensitivity").val(),
-                     "delay": $("#setting-delay").val()}
+                     "delay": $("#setting-delay").val(),
+                     "speed":$("#speed").val()}
 
       console.log(setting.noise);
       socket.emit('msgEvent',{msg:"updateServer", data: {keyphrase, setting}});
@@ -241,6 +248,9 @@
 
       $("#setting-delay").val(set.delay);
       $("#setting-delay").parent().find('.setting-value')[0].innerHTML = set.delay;
+
+      $("#setting-speed").val(set.speed);
+      $("#setting-speed").parent().find('.setting-value')[0].innerHTML = set.speed;
 
     }
 
@@ -283,6 +293,11 @@
       socket.emit('msgEvent',{msg:"delayChange"});
     });
 
+    $('#setting-speed').change(function(e){
+      updateServer();
+      socket.emit('msgEvent',{msg:"speedChange"});
+    });
+
     $('#noise').change(function(e){
       updateServer();
       socket.emit('msgEvent',{msg:"noiseChanged"});
@@ -312,6 +327,9 @@
 
       $("#setting-delay").val(10);
       $("#setting-delay").parent().find('.setting-value')[0].innerHTML = 10;
+
+      $("#setting-speed").val(200);
+      $("#setting-speed").parent().find('.setting-value')[0].innerHTML = 200;
 
       updateServer();
 
