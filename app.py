@@ -42,6 +42,9 @@ def incoming(message):
         else:
             noise.stop()
 
+    if('speedChange' in msg):
+        print("speed has changed")
+
 
     if('request' in msg):
         # send settings when client requests them
