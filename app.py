@@ -42,10 +42,6 @@ def incoming(message):
         else:
             noise.stop()
 
-    if('speedChange' in msg):
-        print("speed has changed")
-
-
     if('request' in msg):
         # send settings when client requests them
         print('settings request send')
@@ -57,14 +53,13 @@ def incoming(message):
 
     if('triggerGoogle' in msg):
         print('OkGoogle')
-        #globals.TRIGGER_GOOGLE = True
         noise.stop()
         sound.speak("Ok Google")
         time.sleep(int(globals.SETTING['setting']['delay']))
         noise.play()
         connect.socketio.emit('responsepi2', "noiseStopped")
 
-@connect.socketio.on('ComputerMessage')
+@connect.socketio.on('ComputerMessage') #Receive messages from another client to activate the voice assistant
 def computerMsg(message):
     print("received a message")
     if message == "TriggerGoogle":

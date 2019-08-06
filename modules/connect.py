@@ -26,13 +26,13 @@ def customEvent(msg):
      print ('test')
      print('received : ', msg['msg'])
 
-@app.route('/')
+@app.route('/') #default route
 def index():
     print('Someone Connected!')
     sendMsg('response',settings.read())
     return render_template('index.html')
 
-@socketio.on('connect')
+@socketio.on('connect') #called whenever a client connects to the server
 def connect():
     print('Someone Connected!!!')
     socketio.emit('responsepi', {'data': 'Connected'})
