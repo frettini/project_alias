@@ -7,6 +7,9 @@
 [![Python 3.6](https://img.shields.io/badge/python-3.6-blue.svg)](https://www.python.org/downloads/release/python-360/)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
+This is a fork of the original project alias which can be found here : https://github.com/bjoernkarmann/project_alias
+
+
 Project Alias is an open-source parasite to hack smart home devices. Train custom wake-up names and commands for your devices while disturbing their built-in microphone with noise. Introduce false labelling to their algorithm by changing gender or nationality. Read more about the project **[here](http://bjoernkarmann.dk/project_alias)**.
 
 This repository has been updated to 2.0. Find the old version **[here](http://bjoernkarmann.dk/project_alias)**.

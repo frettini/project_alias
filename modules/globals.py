@@ -1,7 +1,7 @@
 import os
 
 def initialize():
-    global SETTING, RESET, SILENCE,TRIGGERED, GLOW, SPEECH, CONFIG_HAS_CHANGED
+    global SETTING, RESET, SILENCE,TRIGGERED, GLOW, SPEECH, CONFIG_HAS_CHANGED, TRIGGER_GOOGLE
 
     SETTING     = []
     RESET       = False
@@ -10,6 +10,7 @@ def initialize():
     GLOW        = False
     SPEECH      = 0
     CONFIG_HAS_CHANGED = False
+    TRIGGER_GOOGLE = False
 
 
 

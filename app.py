@@ -42,7 +42,6 @@ def incoming(message):
         else:
             noise.stop()
 
-
     if('request' in msg):
         # send settings when client requests them
         print('settings request send')
@@ -51,6 +50,27 @@ def incoming(message):
     if('reloadSpeech' in msg):
         print('reloading speech class')
         globals.CONFIG_HAS_CHANGED = True
+
+    if('triggerGoogle' in msg):
+        print('OkGoogle')
+        noise.stop()
+        sound.speak("Ok Google")
+        time.sleep(int(globals.SETTING['setting']['delay']))
+        noise.play()
+        connect.socketio.emit('responsepi2', "noiseStopped")
+
+@connect.socketio.on('ComputerMessage') #Receive messages from another client to activate the voice assistant
+def computerMsg(message):
+    print("received a message")
+    if message == "TriggerGoogle":
+        print('Computer trigger : Ok Google')
+        noise.stop()
+        sound.speak("Ok Google")
+        time.sleep(int(globals.SETTING['setting']['delay']))
+        noise.play()
+
+    
+
 
 
 # End of socket
@@ -77,6 +97,7 @@ def socket_thread():
 
 def speech_thread():
     # when a keyphrase is detected, the for loop runs (LiveSpeech magic)
+
     for phrase in globals.SPEECH:
         topWord = phrase.segments()[0]
         print('trigger: ', topWord)

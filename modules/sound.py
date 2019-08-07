@@ -41,13 +41,17 @@ def speak(txt):
         if lan[0] == lang:
             lang = lan[1]
 
-    cmd = 'espeak '+lang+gender+' "'+txt+'"'
+    speed = str(globals.SETTING['setting']['speed'])
+    print(speed)
+
+    cmd = 'espeak '+lang+gender+ " -s"+speed+' "'+txt+'"'
     os.system(cmd)
 
 def setVolume():
 
     vol = globals.SETTING['setting']['volume']
     vol = str(settings.mapF(int(vol),0,100,80,100))
+    
     os.system('amixer -c 0 sset Headphone '+vol+'%')
     os.system('amixer -c 0 sset Speaker '+vol+'%')
 

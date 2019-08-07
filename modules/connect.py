@@ -21,8 +21,24 @@ logging.getLogger('werkzeug').setLevel(logging.ERROR) # remove socket io logs
 def sendMsg(namespace,obj):
     socketio.emit(namespace,obj,namespace='/socket')
 
-@app.route('/')
+@socketio.on('customEvent', namespace='/socket')
+def customEvent(msg):
+     print ('test')
+     print('received : ', msg['msg'])
+
+@app.route('/') #default route
 def index():
     print('Someone Connected!')
     sendMsg('response',settings.read())
     return render_template('index.html')
+
+@socketio.on('connect') #called whenever a client connects to the server
+def connect():
+    print('Someone Connected!!!')
+    socketio.emit('responsepi', {'data': 'Connected'})
+
+
+@socketio.on('disconnect')
+def disconnect():
+    print('Client Disconnected')
+    
