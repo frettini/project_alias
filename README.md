@@ -10,6 +10,8 @@
 
 Project Alias is an open-source parasite to train custom wake-up names for smart home devices while disturbing their built-in microphone. Read more about the project [here](http://bjoernkarmann.dk/project_alias).
 
+**Check Branch 2.0 to see the latest Update Version**
+
 <p style='color:red'>NOTE: this project is experimental and still in development.</p>
 
 
