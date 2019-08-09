@@ -1,4 +1,4 @@
-# Project Alias
+# Project Alias Mod UoG
 
 <p float="left">
 <img src="imgs/alias.jpg" width="49%"> <img src="imgs/short_alias_explained.gif" width="49%">
@@ -9,8 +9,11 @@
 
 This is a fork of the original project alias which can be found here : https://github.com/bjoernkarmann/project_alias
 
+This fork has for objective to use and extend project alias to implement new modes of activation. A separate application has been developed which connects to project Alias and remotely activates the device, which can be found [here](https://github.com/frettini/kinect-gesture). 
 
 Project Alias is an open-source parasite to hack smart home devices. Train custom wake-up names and commands for your devices while disturbing their built-in microphone with noise. Introduce false labelling to their algorithm by changing gender or nationality. Read more about the project **[here](http://bjoernkarmann.dk/project_alias)**.
+
+The aim of this fork is to explore different ways of activation of alias, and therefore of the voice assistant. The fork implements code to accomodate connection with that additional application, and to add few functionalities with the browser client
 
 This repository has been updated to 2.0. Find the old version **[here](http://bjoernkarmann.dk/project_alias)**.
 
@@ -22,10 +25,20 @@ This repository has been updated to 2.0. Find the old version **[here](http://bj
 - Change language
 - Adjust trigger sensitivity and delay
 
+### Fork features
+- Trigger Button in browser
+- Voice Speed Setting
+- Additional communication functions for separate applications
+
+
 ### Build Guide
 For the complete step-by-step guide and 3D files see our **[Instructables](https://www.instructables.com/id/Project-Alias)**.
 
+
 ### Easy Setup 🔧
+
+*As of right now, the link to the image doesn't seem to work, the installation should be done using the RaspberryPi setup and Installation section below.
+
 We have made the setup even easier with a SD-card clone of our working Alias.
 1. **[Download]()** the latest .img file
 2. Use **[Etcher](https://etcher.io/)** to flash a micro SD card with the .img file.
@@ -34,17 +47,18 @@ We have made the setup even easier with a SD-card clone of our working Alias.
 
 *We recommend to use the Easy Setup but if you wish to install the project from scratch use the [Raspberry Pi Setup]() instrucrtions.*
 
-### Using Alias 🍄
-1. To start using Alias, log on the wifi network called "Project Alias" with any device.
 
-2. Rename
+### Using Alias  🍄
+1. To start using Alias, while on the same network as Alias, go on your browser and connect to (http://raspberrypi.local:5050).
 
-3. Under the menu, click **Train Alias** and wait a few seconds for the model to learn the name. This name does not necessarily need to be a word but can be a sound and any language. So be creative! You can always reset your name on the menu. *Tip: it helps to record the name from different locations in your home.*
+2. Set up the wake up words and whispers you want to use for your device.
 
-4. Try it out! Say the name and ask your question once you see a blue light on the device or on your phone.
-Note: once trained there is no need to have the phone connected anymore.
+3. Click on Update Alias, and try it out.
 
-*If you find Alias is not responding correctly, try to train a few more examples. Or if you find Alias is triggering to often, you can go to the menu and turn background sound ON. This toggles the background mode and adds any new recordings to the background examples. Record and train just as before, but try to capture unique sounds in your environment or even words that sound similar to your chosen name.*
+4. You can also trigger the device from the Trigger button.
+
+5. You can configure your device by going in the settings, make sure to click on Update Alias to update again.
+
 
 ### Settings ⚙️
 
@@ -56,6 +70,7 @@ Language | Change the language Alias uses to | `English`
 Volume | Change the volume of the speakers. This needs to be heigh enough for the noise to block the assistant, but low enough not to be audible. | `10`
 Sensitivity | This setting changes the sensitivity of the word detection. The lower the number the less sensitive. This setting can be helpful for short words. | `3`
 Noise Delay | This increase the delay after from the trigger word to the restart of the noise. This is used as a noise free window, when asking the assistant a equation. | `10s`
+Voice Speed | This modifies the speed of alias' voice. This is used to have the device faster or slower | 200
 
 
 ### Raspberry Pi Setup
@@ -101,6 +116,12 @@ Install the required modules:
 sudo apt-get install python3-numpy python3-spidev python-h5py
 sudo apt-get install python3-pyaudio libsdl-ttf2.0-0 python3-pygame
 sudo pip3 install flask flask_socketio python_speech_features
+sudo pip3 install pocketsphinx
+```
+Install espeak:
+
+```
+sudo apt-get install espeak
 ```
 
 Clone the **Alias** project:
@@ -130,6 +151,18 @@ sudo reboot
 - If you are using a **Amazon Alexa**, please change line 21 in **app.py** to: ```wakeup = sound.audioPlayer("data/alexa.wav",0,"wakeup", False)```
 
 - To set the volume of the speaker you can change the line 32 in **modules/sound.py** ```os.system('sudo amixer -c 1 sset Speaker 83')```
+
+## Changes
+
+The main changes were made in app.py and the index.html
+
+index.html :
+- New Trigger Button which which activates the Voice Assistant
+- New Voice Speed Slider which changes the speed of the voice in sound.py
+
+app.py :
+- New socketio handler for any packet of name "ComputerMessage", no namespaces on the handler because the computer application doesn't support namespaces
+
 
 ## Contributors
 Made by [Bjørn Karmann](http://bjoernkarmann.dk) and [Tore Knudsen](http://www.toreknudsen.dk/).
